@@ -1,0 +1,94 @@
+<section id="contacto" class="section contact" aria-labelledby="contacto-title">
+  <div class="container">
+    <div class="banner" appReveal>
+      <img
+        src="images/terraza.jpg"
+        alt="Terraza del restaurant con mesas de madera, luces colgantes, bandera del Perú y el logo en la pared"
+        width="1200"
+        height="800"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="banner-copy">
+        <p class="eyebrow">Contacto</p>
+        <h2 id="contacto-title" class="section-title">Te esperamos en <span class="script">nuestra terraza</span></h2>
+        <p class="section-lead">Reserva tu mesa, pregunta por la carta o coordina tu celebración por WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="info" appReveal>
+        <dl class="list">
+          <div class="item">
+            <dt><app-icon name="pin" [size]="22" /> Dirección</dt>
+            <dd>
+              {{ business.address.street }}, {{ business.address.city }}<br />
+              {{ business.address.region }}, {{ business.address.country }}
+              <a class="link" [href]="business.directionsUrl" target="_blank" rel="noopener">
+                <app-icon name="directions" [size]="16" />
+                Cómo llegar
+                <span class="sr-only">(Google Maps, se abre en una pestaña nueva)</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="item">
+            <dt><app-icon name="clock" [size]="22" /> Horarios</dt>
+            <dd>
+              <table class="hours">
+                <caption class="sr-only">Horario de atención</caption>
+                <tbody>
+                  @for (h of business.hours; track h.day) {
+                    <tr [class.today]="h.day === today()">
+                      <th scope="row">
+                        {{ h.label }}
+                        @if (h.day === today()) {
+                          <span class="badge">Hoy</span>
+                        }
+                      </th>
+                      <td>{{ h.hours }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </dd>
+          </div>
+
+          <div class="item">
+            <dt><app-icon name="phone" [size]="22" /> Teléfono</dt>
+            <dd>
+              <a class="link strong" [href]="business.phoneHref">{{ business.phoneDisplay }}</a>
+            </dd>
+          </div>
+
+          <div class="item">
+            <dt><app-icon name="instagram" [size]="22" /> Redes</dt>
+            <dd>
+              <a class="link strong" [href]="business.social.instagram.url" target="_blank" rel="noopener">
+                Instagram {{ business.social.instagram.handle }}
+                <span class="sr-only">(se abre en una pestaña nueva)</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <a class="btn btn-wa btn-lg wa" [href]="wa" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" [size]="26" />
+          Escríbenos por WhatsApp
+          <span class="sr-only">(se abre en una pestaña nueva)</span>
+        </a>
+        <p class="price">Precio promedio: {{ business.priceRange }}</p>
+      </div>
+
+      <div class="map" appReveal="120">
+        <iframe
+          [src]="mapUrl"
+          title="Mapa: De Lima con Amor, Av. República de Chile 667, Rancagua"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

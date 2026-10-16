@@ -1,0 +1,175 @@
+.services {
+  background: var(--bg-alt);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.media {
+  position: relative;
+}
+
+.ph {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .media img {
+  transform: scale(1.04);
+}
+
+.chip {
+  position: absolute;
+  left: var(--space-4);
+  bottom: calc(-1 * var(--space-5));
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 4px solid var(--surface);
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+
+.body h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.body p {
+  color: var(--muted);
+}
+
+.ask {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.ask:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ask app-icon {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.ask:hover app-icon {
+  transform: translateX(3px);
+}
+
+/* ---------- Instagram ---------- */
+
+.insta {
+  margin-top: var(--space-8);
+}
+
+.insta-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.insta-head h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.5rem;
+}
+
+.insta-head h3 app-icon {
+  color: var(--magenta-text);
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .insta-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+.insta-grid a {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.insta-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out), opacity var(--dur);
+}
+
+.insta-grid a:hover img {
+  transform: scale(1.05);
+  opacity: 0.85;
+}

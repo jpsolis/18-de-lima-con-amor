@@ -1,0 +1,48 @@
+<section id="opiniones" class="section reviews" aria-labelledby="opiniones-title">
+  <div class="container">
+    <header class="section-head section-head--center" appReveal>
+      <p class="eyebrow">Opiniones</p>
+      <h2 id="opiniones-title" class="section-title">Lo que dicen <span class="script">nuestros clientes</span></h2>
+      <p class="summary">
+        <span class="stars" aria-hidden="true">
+          @for (n of starSlots; track n) {
+            <app-icon name="star" [size]="22" />
+          }
+        </span>
+        <span><strong>{{ google.rating }}</strong> de 5 en Google · {{ google.reviewCount }} opiniones</span>
+      </p>
+    </header>
+
+    <ul class="grid">
+      @for (r of reviews; track r.author; let i = $index) {
+        <li class="card" [appReveal]="i * 80">
+          <figure>
+            <div class="stars" role="img" [attr.aria-label]="r.stars + ' de 5 estrellas'">
+              @for (n of starSlots; track n) {
+                <app-icon name="star" [size]="18" [class.off]="n > r.stars" />
+              }
+            </div>
+            <blockquote>
+              <p>“{{ r.text }}”</p>
+            </blockquote>
+            <figcaption>
+              <span class="avatar" aria-hidden="true">{{ initials(r.author) }}</span>
+              <span>
+                <strong>{{ r.author }}</strong>
+                <span class="meta">Reseña de Google · {{ r.when }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </li>
+      }
+    </ul>
+
+    <p class="more" appReveal>
+      <a class="btn btn-ghost btn-lg" [href]="google.reviewsUrl" target="_blank" rel="noopener">
+        Ver todas las opiniones en Google
+        <app-icon name="external" [size]="18" />
+        <span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+    </p>
+  </div>
+</section>

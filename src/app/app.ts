@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Contact } from './sections/contact/contact';
+import { Footer } from './sections/footer/footer';
+import { Header } from './sections/header/header';
+import { Hero } from './sections/hero/hero';
+import { Reviews } from './sections/reviews/reviews';
+import { Services } from './sections/services/services';
+import { WhatsappFab } from './sections/whatsapp-fab/whatsapp-fab';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Header, Hero, Services, Reviews, Contact, Footer, WhatsappFab],
   templateUrl: './app.html',
-  styleUrl: './app.css'
 })
-export class App {
-  protected title = '18-de-lima-con-amor';
-}
+export class App {}

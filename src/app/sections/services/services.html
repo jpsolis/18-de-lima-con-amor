@@ -1,0 +1,56 @@
+<section id="servicios" class="section services" aria-labelledby="servicios-title">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <p class="eyebrow">Servicios</p>
+      <h2 id="servicios-title" class="section-title">
+        Sabores del Perú, <span class="script">hechos con amor</span>
+      </h2>
+      <p class="section-lead">Cocina peruana casera, terraza para compartir y buena música para alargar la sobremesa.</p>
+    </header>
+
+    <ul class="grid">
+      @for (s of services; track s.id; let i = $index) {
+        <li class="card" [appReveal]="i * 60" [style.--accent]="s.accent">
+          <div class="media">
+            <div class="ph">
+              <img [src]="s.image" [alt]="s.imageAlt" width="800" height="600" loading="lazy" decoding="async" />
+            </div>
+            <span class="chip"><app-icon [name]="s.icon" [size]="22" /></span>
+          </div>
+          <div class="body">
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.description }}</p>
+            <a class="ask" [href]="s.wa" target="_blank" rel="noopener">
+              Consultar
+              <app-icon name="arrow" [size]="18" />
+              <span class="sr-only">sobre {{ s.title }} por WhatsApp (se abre en una pestaña nueva)</span>
+            </a>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <div class="insta" appReveal>
+      <div class="insta-head">
+        <h3>
+          <app-icon name="instagram" [size]="24" />
+          Lo último en Instagram
+        </h3>
+        <a class="btn btn-ghost" [href]="instagram.url" target="_blank" rel="noopener">
+          Seguir {{ instagram.handle }}
+          <span class="sr-only">(se abre en una pestaña nueva)</span>
+        </a>
+      </div>
+      <ul class="insta-grid">
+        @for (p of posts; track p.href) {
+          <li>
+            <a [href]="p.href" target="_blank" rel="noopener">
+              <img [src]="p.src" [alt]="p.alt" width="360" height="480" loading="lazy" decoding="async" />
+              <span class="sr-only">Ver publicación en Instagram (se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

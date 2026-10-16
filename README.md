@@ -36,6 +36,26 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Publicación en Cloudflare (Workers con assets estáticos, dominio de prueba)
+
+Sitio estático prerenderizado publicado como Worker de solo assets (`de-lima-con-amor.<subdominio>.workers.dev`). La configuración está en `wrangler.jsonc`.
+
+```bash
+# Una sola vez: iniciar sesión (abre el navegador para autorizar)
+npx wrangler login
+
+# Compilar y publicar (repetir en cada actualización)
+npm run deploy
+```
+
+Notas:
+
+- La carpeta publicada es `dist/18-de-lima-con-amor/browser` (`assets.directory` en `wrangler.jsonc`).
+- `public/_headers` incluye `X-Robots-Tag: noindex` para que Google no indexe el dominio de prueba. **Elimina esa línea al conectar el dominio definitivo.**
+- El subdominio `workers.dev` es de toda la cuenta y se cambia en Cloudflare → Workers & Pages → Subdomain (afecta a todos los Workers de la cuenta).
+- Para conectar un dominio propio: Cloudflare → Workers & Pages → `de-lima-con-amor` → Settings → Domains & Routes.
+- Datos del negocio (teléfono, horarios, reseñas, servicios): `src/app/core/business.data.ts`. Fotos en `public/images`.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:

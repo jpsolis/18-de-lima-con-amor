@@ -1,1 +1,312 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   De Lima con Amor — tokens y estilos base
+   Sistema: design-system/de-lima-con-amor/MASTER.md (ui-ux-pro-max, adaptado al logo)
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Fondos: negro cálido del logo */
+  --bg: #15110f;
+  --bg-alt: #1c1613;
+  --surface: #251d19;
+  --surface-2: #2f2520;
+  --line: rgb(255 246 236 / 0.12);
+
+  /* Texto (contraste sobre --bg: text 17:1 · muted 10:1) */
+  --text: #fff6ec;
+  --muted: #d4c4b6;
+
+  /* Colores del logo */
+  --magenta: #e5177e;
+  --magenta-text: #ff6fb3; /* versión legible como texto sobre fondo oscuro (6.9:1) */
+  --coral: #f26b4b;
+  --orange: #f59a2f;
+  --yellow: #f7c51e;
+  --lime: #9bd14a;
+  --brand-gradient: linear-gradient(90deg, var(--magenta), var(--coral) 28%, var(--orange) 50%, var(--yellow) 72%, var(--lime));
+
+  /* WhatsApp */
+  --wa: #25d366;
+  --wa-hover: #3ee07c;
+  --on-wa: #062a12;
+
+  /* Tipografía */
+  --font-display: 'Bricolage Grotesque', 'Karla', system-ui, sans-serif;
+  --font-script: 'Yellowtail', 'Brush Script MT', cursive;
+  --font-body: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Espaciado 4/8 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+
+  --shadow-card: 0 18px 40px -24px rgb(0 0 0 / 0.8);
+  --shadow-fab: 0 12px 28px -8px rgb(37 211 102 / 0.55), 0 4px 10px rgb(0 0 0 / 0.4);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 600ms;
+
+  --z-header: 40;
+  --z-fab: 100;
+
+  --container: 1180px;
+  --header-h: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + var(--space-4));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 1000;
+  padding: var(--space-3) var(--space-4);
+  background: var(--yellow);
+  color: var(--bg);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ---------- Secciones ---------- */
+
+.section {
+  padding-block: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--space-7);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--brand-gradient);
+}
+
+.section-title {
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  font-weight: 800;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--magenta-text);
+}
+
+.section-lead {
+  margin-top: var(--space-4);
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+/* Franja con los colores del logo */
+.brand-stripe {
+  height: 6px;
+  background: var(--brand-gradient);
+}
+
+/* ---------- Botones ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-wa {
+  background: var(--wa);
+  color: var(--on-wa);
+}
+
+.btn-wa:hover {
+  background: var(--wa-hover);
+}
+
+.btn-lg {
+  min-height: 60px;
+  padding: var(--space-4) var(--space-6);
+  font-size: 1.125rem;
+}
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ---------- Animación de aparición (ver Reveal) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

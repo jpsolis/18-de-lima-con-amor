@@ -1,0 +1,49 @@
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="copy">
+      <p class="eyebrow">{{ business.kind }} · {{ business.address.city }}</p>
+      <h1 id="hero-title">
+        De Lima
+        <span class="script">con Amor</span>
+      </h1>
+      <p class="tagline">{{ business.tagline }}</p>
+
+      <div class="cta">
+        <a class="btn btn-wa btn-lg" [href]="wa" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" [size]="26" />
+          Escríbenos por WhatsApp
+          <span class="sr-only">(se abre en una pestaña nueva)</span>
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver lo que ofrecemos</a>
+      </div>
+
+      <a class="rating" [href]="business.google.reviewsUrl" target="_blank" rel="noopener">
+        <span class="stars" aria-hidden="true">
+          @for (n of [1, 2, 3, 4, 5]; track n) {
+            <app-icon name="star" [size]="18" />
+          }
+        </span>
+        <span>
+          <strong>{{ business.google.rating }}</strong> en Google · {{ business.google.reviewCount }} opiniones
+        </span>
+        <span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+    </div>
+
+    <figure class="photo">
+      <div class="frame">
+        <img
+          src="images/hero-ceviche.jpg"
+          alt="Ceviche de pescado con choclo, cancha y camote, acompañado de chicharrón de calamar"
+          width="960"
+          height="1200"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="tag">
+        <app-icon name="pin" [size]="18" />
+        {{ business.address.street }}, {{ business.address.city }}
+      </figcaption>
+    </figure>
+  </div>
+</section>
